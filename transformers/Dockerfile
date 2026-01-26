@@ -10,20 +10,23 @@ RUN apt-get update && apt-get install -y \
     wget \
     nano \
     python3 \
-    pip 
+    python3-pip 
 
 # Install Python packages for attention mechanism and positional encoding notebook
 RUN pip3 install "jinja2<3.1.0"
-RUN pip3 install torch==2.3.0 torchtext==0.18.0 torchdata==0.9.0 torchvision transformers Levenshtein
+RUN pip3 install torch==2.3.0 torchtext==0.18.0 torchdata==0.9.0 torchvision transformers Levenshtein spacy pdfplumber fpdf nltk
 RUN pip3 install pandas numpy seaborn matplotlib scikit-learn pmdarima portalocker plotly dash jupyter 
 
 
 # Set working directory
 WORKDIR /workspace
 
-COPY attention_mechanism_and_pos_encoding.ipynb /workspace/attention_mechanism_and_pos_encoding.ipynb
-COPY transformers_for_classification.ipynb /workspace/transformers_for_classification.ipynb
-COPY decoder_gpt_like_models.ipynb /workspace/decoder_gpt_like_models.ipynb
+COPY 1_attention_mechanism_and_pos_encoding.ipynb /workspace/1_attention_mechanism_and_pos_encoding.ipynb
+COPY 2_transformers_for_classification.ipynb /workspace/2_transformers_for_classification.ipynb
+COPY 3_decoder_gpt_like_models.ipynb /workspace/3_decoder_gpt_like_models.ipynb
+COPY 4_pre_training_BERT.ipynb /workspace/4_pre_training_BERT.ipynb
+COPY 5_data_preparation_for_BERT.ipynb /workspace/5_data_preparation_for_BERT.ipynb
+COPY 6_transformers_for_translation.ipynb /workspace/6_transformers_for_translation.ipynb
 
 # Expose port for Jupyter
 EXPOSE 8888
